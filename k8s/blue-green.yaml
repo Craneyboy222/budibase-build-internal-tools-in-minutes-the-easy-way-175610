@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: enterprise-app-green
+  labels:
+    app: enterprise-app
+    version: green
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: enterprise-app
+      version: green
+  template:
+    metadata:
+      labels:
+        app: enterprise-app
+        version: green
+    spec:
+      containers:
+      - name: frontend
+        image: enterprise-app-frontend:green
+        ports:
+        - containerPort: 80
+      - name: backend
+        image: enterprise-app-backend:green
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: enterprise-app-green
+spec:
+  selector:
+    app: enterprise-app
+    version: green
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer

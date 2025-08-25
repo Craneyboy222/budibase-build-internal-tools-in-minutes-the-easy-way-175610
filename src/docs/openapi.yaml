@@ -1,0 +1,42 @@
+openapi: 3.0.0
+info:
+  title: Enterprise Application API
+  version: 1.0.0
+  description: API documentation for the enterprise application
+servers:
+  - url: https://api.yourenterpriseapp.com
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://auth.yourenterpriseapp.com/authorize
+          tokenUrl: https://auth.yourenterpriseapp.com/token
+          scopes: {}
+security:
+  - OAuth2: []
+paths:
+  /api/users:
+    get:
+      summary: Retrieve a list of users
+      responses:
+        '200':
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string

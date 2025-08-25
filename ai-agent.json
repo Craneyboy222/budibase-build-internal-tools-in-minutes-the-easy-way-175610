@@ -1,0 +1,12 @@
+{
+  "capabilities": [
+    "naturalLanguageProcessing",
+    "predictiveAnalytics",
+    "automation",
+    "dataVisualization",
+    "userBehaviorAnalysis"
+  ],
+  "integrations": {
+    "api": ["/api/users", "/api/applications", "/api/components", "/api/workflows"]
+  }
+}

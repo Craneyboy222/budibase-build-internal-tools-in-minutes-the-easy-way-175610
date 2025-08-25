@@ -1,0 +1,32 @@
+/* Utility styles */
+.hidden {
+  @apply hidden;
+}
+
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.text-center {
+  @apply text-center;
+}
+
+.mt-4 {
+  @apply mt-4;
+}
+
+.mb-4 {
+  @apply mb-4;
+}
+
+.p-4 {
+  @apply p-4;
+}
+
+.rounded {
+  @apply rounded;
+}
+
+.shadow {
+  @apply shadow;
+}

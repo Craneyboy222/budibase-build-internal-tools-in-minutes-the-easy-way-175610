@@ -1,0 +1,27 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: enterprise-app-monitor
+spec:
+  selector:
+    matchLabels:
+      app: enterprise-app
+  endpoints:
+  - port: http
+    interval: 30s
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: monitoring
+  labels:
+    app: prometheus
+  data:
+    prometheus.yml: |
+      global:
+        scrape_interval: 15s
+      scrape_configs:
+        - job_name: 'enterprise-app'
+          static_configs:
+            - targets: ['enterprise-app:80']
